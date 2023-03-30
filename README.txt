@@ -1,0 +1,1 @@
+This time the game is created with Classes.
