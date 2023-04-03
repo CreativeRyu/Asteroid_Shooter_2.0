@@ -1,6 +1,7 @@
 import sys
 import pygame
 from spaceship import SpaceShip
+from laser import Laser
 
 pygame.init()
 FPS = 60
@@ -11,10 +12,12 @@ game_clock = pygame.time.Clock()
 background = pygame.image.load("ressources/graphics/background.png").convert()
 
 # Sprite Groups
-ship_group = pygame.sprite.Group()
+ship_group = pygame.sprite.GroupSingle()
+laser_group = pygame.sprite.Group()
 
 # Ship Creation
 ship = SpaceShip(ship_group)
+laser = Laser(laser_group,(0,300))
 
 # Game Loop
 while True:
@@ -28,9 +31,13 @@ while True:
     # Delta Time
     delta_time = game_clock.tick(FPS) / 1000
     
+    # update
+    ship_group.update()
+    
     # Update graphics
     display.blit(background, (0,0))
     ship_group.draw(display)
+    laser_group.draw(display)
 
     # show current Frame
     pygame.display.update()
