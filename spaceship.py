@@ -1,4 +1,5 @@
 import pygame
+from laser import Laser
 WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
 
 class SpaceShip(pygame.sprite.Sprite):
@@ -19,12 +20,13 @@ class SpaceShip(pygame.sprite.Sprite):
     def move(self):
         self.rect.center = pygame.mouse.get_pos()
     
-    def fire_laser(self):
+    def fire_laser(self, laser_group):
         if pygame.mouse.get_pressed()[0] and self.can_fire:
             self.can_fire = False
             self.time_of_fire = pygame.time.get_ticks()
+            Laser(laser_group, self.rect.midtop)
     
-    def update(self):
+    def update(self, laser_group):
         self.move()
         self.fire_timer()
-        self.fire_laser()
+        self.fire_laser(laser_group)
