@@ -13,7 +13,7 @@ class Asteroid(pygame.sprite.Sprite):
         
         # Float Based Position
         self.direction = pygame.math.Vector2(uniform(-0.5, 0.5),1)
-        self.speed = 200
+        self.speed = randint(200, 400)
         
     def update(self, delta_time):
         self.position += self.direction * self.speed * delta_time

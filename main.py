@@ -2,6 +2,7 @@ import sys
 import pygame
 from spaceship import SpaceShip
 from asteroid import Asteroid
+from userinterface import Score
 
 pygame.init()
 FPS = 60
@@ -13,7 +14,7 @@ background = pygame.image.load("ressources/graphics/background.png").convert()
 
 # asteroid timer
 asteroid_timer = pygame.event.custom_type()
-pygame.time.set_timer(asteroid_timer, 2000)
+pygame.time.set_timer(asteroid_timer, 1400)
 
 # Sprite Groups
 ship_group = pygame.sprite.GroupSingle()
@@ -22,6 +23,7 @@ asteroid_group = pygame.sprite.Group()
 
 # Ship Creation
 ship = SpaceShip(ship_group)
+score = Score()
 
 # Game Loop
 while True:
@@ -48,6 +50,7 @@ while True:
     ship_group.draw(display)
     laser_group.draw(display)
     asteroid_group.draw(display)
+    score.show_score(display)
     
     # show current Frame
     pygame.display.update()
