@@ -11,8 +11,9 @@ display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Asteroid Shooter 2.0 OOP")
 game_clock = pygame.time.Clock()
 background = pygame.image.load("ressources/graphics/background.png").convert()
+game_music = pygame.mixer.Sound("ressources/sounds/music.wav")
 
-# asteroid timer
+# Asteroid Timer
 asteroid_timer = pygame.event.custom_type()
 pygame.time.set_timer(asteroid_timer, 1400)
 
@@ -21,9 +22,11 @@ ship_group = pygame.sprite.GroupSingle()
 laser_group = pygame.sprite.Group()
 asteroid_group = pygame.sprite.Group()
 
-# Ship Creation
+# Object Declaration
 ship = SpaceShip(ship_group)
 score = Score()
+
+game_music.play(loops = -1)
 
 # Game Loop
 while True:

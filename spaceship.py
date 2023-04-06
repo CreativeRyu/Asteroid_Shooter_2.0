@@ -10,6 +10,7 @@ class SpaceShip(pygame.sprite.Sprite):
         self.image = pygame.image.load("ressources/graphics/ship.png").convert_alpha()
         self.rect = self.image.get_rect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
         self.mask = pygame.mask.from_surface(self.image)
+        self.laser_sound = pygame.mixer.Sound("ressources/sounds/laser.ogg")
     
     # Timer zur limitierung des Lasers
     def fire_timer(self):
@@ -26,6 +27,7 @@ class SpaceShip(pygame.sprite.Sprite):
             self.can_fire = False
             self.time_of_fire = pygame.time.get_ticks()
             Laser(laser_group, self.rect.midtop)
+            self.laser_sound.play()
     
     # def asteroid_collision(self, asteroid_group):
     #     if pygame.sprite.spritecollide(self, asteroid_group, True):

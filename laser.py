@@ -6,6 +6,7 @@ class Laser(pygame.sprite.Sprite):
         self.image = pygame.image.load("ressources/graphics/laser.png").convert_alpha()
         self.rect = self.image.get_rect(midbottom = (position))
         self.mask = pygame.mask.from_surface(self.image)
+        self.explosion_sound = pygame.mixer.Sound("ressources/sounds/explosion.wav")
         
         # Float Based Position
         self.position = pygame.math.Vector2(self.rect.topleft)
@@ -14,6 +15,7 @@ class Laser(pygame.sprite.Sprite):
     
     def asteroid_collision(self, asteroid_group):
         if pygame.sprite.spritecollide(self, asteroid_group, True, pygame.sprite.collide_mask):
+            self.explosion_sound.play()
             self.kill()
         
     def update(self, delta_time, asteroid_group):
