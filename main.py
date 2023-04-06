@@ -42,7 +42,7 @@ while True:
     
     # update
     ship_group.update(laser_group)
-    laser_group.update(delta_time)
+    laser_group.update(delta_time, asteroid_group)
     asteroid_group.update(delta_time)
     
     # Update graphics

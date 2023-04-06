@@ -9,6 +9,7 @@ class SpaceShip(pygame.sprite.Sprite):
         self.time_of_fire = None
         self.image = pygame.image.load("ressources/graphics/ship.png").convert_alpha()
         self.rect = self.image.get_rect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
+        self.mask = pygame.mask.from_surface(self.image)
     
     # Timer zur limitierung des Lasers
     def fire_timer(self):
@@ -25,6 +26,11 @@ class SpaceShip(pygame.sprite.Sprite):
             self.can_fire = False
             self.time_of_fire = pygame.time.get_ticks()
             Laser(laser_group, self.rect.midtop)
+    
+    # def asteroid_collision(self, asteroid_group):
+    #     if pygame.sprite.spritecollide(self, asteroid_group, True):
+    #         pygame.quit()
+    #         sys.exit()
     
     def update(self, laser_group):
         self.move()

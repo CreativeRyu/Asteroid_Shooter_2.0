@@ -10,4 +10,4 @@ class Score:
         text_surf = self.font.render(score_text, True,(255,255,255))
         text_rect = text_surf.get_rect(midbottom = (WINDOW_WIDTH / 7, WINDOW_HEIGHT - 40))
         display.blit(text_surf, text_rect)
-        pygame.draw.rect(display, (255,255,255), text_rect.inflate(30, 30), width = 8, border_radius= 5)
+        pygame.draw.rect(display, (255,255,255), text_rect.inflate(30, 30), width = 5, border_radius= 5)
