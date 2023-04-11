@@ -1,6 +1,6 @@
 import pygame
 from random import randint, uniform
-WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
+import game_settings as gs
 
 class Asteroid(pygame.sprite.Sprite):
     def __init__(self, group) -> None:
@@ -10,7 +10,7 @@ class Asteroid(pygame.sprite.Sprite):
         asteroid_size = pygame.math.Vector2(self.image.get_size()) * scale_multiplier
         self.scaled_surface = pygame.transform.scale(self.image, (asteroid_size))
         self.image = self.scaled_surface
-        self.x_cor = randint(-100, WINDOW_WIDTH + 100)
+        self.x_cor = randint(-100, gs.WINDOW_WIDTH + 100)
         self.y_cor = randint(-100, -50)
         self.position = self.x_cor, self.y_cor
         self.rect = self.image.get_rect(center = (self.position))
@@ -34,6 +34,6 @@ class Asteroid(pygame.sprite.Sprite):
     def update(self, delta_time):
         self.position += self.direction * self.speed * delta_time
         self.rect.topleft = (round(self.position.x), round(self.position.y))
-        if self.rect.top > WINDOW_HEIGHT:
+        if self.rect.top > gs.WINDOW_HEIGHT:
             self.kill()
         self.rotate(delta_time)

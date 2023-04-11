@@ -1,6 +1,6 @@
 import pygame
 from laser import Laser
-WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
+import game_settings as gs
 
 class SpaceShip(pygame.sprite.Sprite):
     def __init__(self, group) -> None:
@@ -8,7 +8,7 @@ class SpaceShip(pygame.sprite.Sprite):
         self.can_fire = True
         self.time_of_fire = None
         self.image = pygame.image.load("ressources/graphics/ship.png").convert_alpha()
-        self.rect = self.image.get_rect(center = (WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2))
+        self.rect = self.image.get_rect(center = (gs.WINDOW_WIDTH / 2, gs.WINDOW_HEIGHT / 2))
         self.mask = pygame.mask.from_surface(self.image)
         self.laser_sound = pygame.mixer.Sound("ressources/sounds/laser.ogg")
     

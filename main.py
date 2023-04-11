@@ -3,11 +3,11 @@ import pygame
 from spaceship import SpaceShip
 from asteroid import Asteroid
 from userinterface import Score
+import game_settings as gs
 
 pygame.init()
-FPS = 60
-WINDOW_WIDTH, WINDOW_HEIGHT = 1280, 720
-display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+
+display = pygame.display.set_mode((gs.WINDOW_WIDTH, gs.WINDOW_HEIGHT))
 pygame.display.set_caption("Asteroid Shooter 2.0 OOP")
 game_clock = pygame.time.Clock()
 background = pygame.image.load("ressources/graphics/background.png").convert()
@@ -41,7 +41,7 @@ while True:
             asteroid = Asteroid(asteroid_group)
     
     # Delta Time
-    delta_time = game_clock.tick(FPS) / 1000
+    delta_time = game_clock.tick(gs.FPS) / 1000
     
     # update
     ship_group.update(laser_group)
