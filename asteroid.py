@@ -32,8 +32,8 @@ class Asteroid(pygame.sprite.Sprite):
         self.mask = pygame.mask.from_surface(self.image)
         
     def update(self, delta_time):
-        self.position += self.direction * self.speed * delta_time
-        self.rect.topleft = (round(self.position.x), round(self.position.y))
-        if self.rect.top > gs.WINDOW_HEIGHT:
-            self.kill()
-        self.rotate(delta_time)
+            self.position += self.direction * self.speed * delta_time
+            self.rect.topleft = (round(self.position.x), round(self.position.y))
+            if self.rect.top > gs.WINDOW_HEIGHT:
+                self.kill()
+            self.rotate(delta_time)
