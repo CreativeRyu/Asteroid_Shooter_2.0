@@ -1,4 +1,5 @@
 import pygame
+import game_settings as gs
 
 class Laser(pygame.sprite.Sprite):
     def __init__(self, group, position) -> None:
@@ -16,8 +17,9 @@ class Laser(pygame.sprite.Sprite):
     def asteroid_collision(self, asteroid_group):
         if pygame.sprite.spritecollide(self, asteroid_group, True, pygame.sprite.collide_mask):
             self.explosion_sound.play()
+            gs.SCORE += 1
             self.kill()
-        
+    
     def update(self, delta_time, asteroid_group):
         self.position += self.direction * self.speed * delta_time
         self.rect.topleft = (round(self.position.x), round(self.position.y))
